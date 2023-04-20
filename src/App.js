@@ -1,23 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { useState } from "react";
+import SearchBar from "./components/searchBar/SearchBar";
+import SearchResults from "./components/searchResults/SearchResults";
+import Track from "./components/track/Track";
 
 function App() {
+  const trackArray = [
+    { artist: "KGLW", name: "Robot Stop", album: "Nonagon Infinity", id: 1 },
+    { artist: "RHCP", name: "By The Way", album: "By The Way", id: 6 },
+  ];
+  const [track, setTrack] = useState(trackArray[1]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div id="container">
+      <SearchBar />
+      <SearchResults />
+      <Track
+        name={trackArray[0].name}
+        artist={trackArray[0].artist}
+        album={trackArray[0].album}
+      />
     </div>
   );
 }
