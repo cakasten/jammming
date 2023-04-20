@@ -9,16 +9,16 @@ function App() {
     { artist: "KGLW", name: "Robot Stop", album: "Nonagon Infinity", id: 1 },
     { artist: "RHCP", name: "By The Way", album: "By The Way", id: 6 },
   ];
-  const [track, setTrack] = useState(trackArray[1]);
+  const [track, setTrack] = useState(trackArray[0]);
 
   return (
     <div id="container">
       <SearchBar />
       <SearchResults />
       <Track
-        name={trackArray[0].name}
-        artist={trackArray[0].artist}
-        album={trackArray[0].album}
+        name={track.name}
+        artist={track.artist}
+        album={track.album}
       />
     </div>
   );
