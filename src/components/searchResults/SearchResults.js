@@ -6,6 +6,7 @@ function SearchResults({ props }) {
   return (
     <Card>
         <h1>Search Results:</h1>
+        
     </Card>
   );
 }
