@@ -2,8 +2,6 @@ import "./App.css";
 import { useState } from "react";
 import SearchBar from "./components/searchBar/SearchBar";
 import SearchResults from "./components/searchResults/SearchResults";
-import Track from "./components/track/Track";
-import Tracklist from "./components/tracklist/Tracklist";
 import Playlist from "./components/playlist/Playlist";
 
 function App() {
@@ -27,32 +25,59 @@ function App() {
       id: 3,
     },
   ];
-  const [track, setTrack] = useState(trackArray[0]);
-  const [playlistArray, setPlaylistArray] = useState([]);
+
+  const [playlistArray, setPlaylist] = useState([]);
   const [searchInput, setSearchInput] = useState("");
+  const [playlistTitle, setPlaylistTitle] = useState("New Playlist");
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
   };
+
   const handleSubmit = (e) => {
     e.preventDefault();
   };
-  const addTrackToPlaylist = () => {
-    setTrack();
+
+  const handleTitleChange = (e) => {};
+
+  const hanldeAddToPlaylist = (e) => {
+    const selectedTrack = e.target.parentElement.id;
+    setPlaylist((playlistArray) => [
+      ...playlistArray,
+      trackArray[selectedTrack],
+    ]);
+  };
+
+  const handleRemoveFromPlaylist = (e) => {
+    const selectedTrack = e.target.parentElement.id;
+    setPlaylist(
+      playlistArray.filter((track) => track.id.toString() !== selectedTrack)
+    );
   };
 
   return (
-    <div id="container">
-      <SearchBar
-        onchange={handleInputChange}
-        submit={handleSubmit}
-        search={searchInput}
-      />
-      <SearchResults />
-      <Tracklist tracks={trackArray} />
-      <button>Save to Spotify</button>
-      <Playlist playlist={playlistArray} />
-    </div>
+    <>
+      <div id="search">
+        <SearchBar
+          onchange={handleInputChange}
+          submit={handleSubmit}
+          search={searchInput}
+        />
+      </div>
+      <div id="list">
+        <SearchResults
+          tracks={trackArray}
+          addToPlaylist={hanldeAddToPlaylist}
+        />
+        <Playlist
+          playlist={playlistArray}
+          title={playlistTitle}
+          removeFromPlaylist={handleRemoveFromPlaylist}
+          titleChange={handleTitleChange}
+        />
+      </div>
+      <button onClick={hanldeAddToPlaylist}>Save to Spotify</button>
+    </>
   );
 }
 

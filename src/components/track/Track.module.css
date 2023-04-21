@@ -1,0 +1,12 @@
+.title {
+    text-decoration: underline;
+}
+
+.addRemove {
+    font-size: 30px;
+    align-self: end;
+}
+
+.addRemove:hover {
+    cursor: pointer;
+}

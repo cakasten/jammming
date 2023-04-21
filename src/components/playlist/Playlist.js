@@ -1,10 +1,12 @@
 import React from "react";
 import Card from "../card/Card";
 import Track from "../track/Track";
+import styles from "./Playlist.module.css";
 
-function Playlist({ playlist }) {
+function Playlist({ playlist, title, removeFromPlaylist }) {
   return (
-    <Card>
+    <Card className={styles.container}>
+      <h1>{title}</h1>
       {playlist.length > 0 ? (
         playlist.map((track) => (
           <Track
@@ -12,10 +14,14 @@ function Playlist({ playlist }) {
             artist={track.artist}
             album={track.album}
             id={track.id}
+            key={track.id}
+            removeFromPlaylist={removeFromPlaylist}
           />
         ))
       ) : (
-        <p>Add songs to your playlist.</p>
+        <>
+          <p>Add songs to your playlist.</p>
+        </>
       )}
     </Card>
   );
