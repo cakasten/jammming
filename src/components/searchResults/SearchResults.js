@@ -6,7 +6,7 @@ import Tracklist from "../tracklist/Tracklist";
 function SearchResults({ tracks, addToPlaylist }) {
   return (
     <Card>
-        <h1>Search Results:</h1>
+        <h1 className="title">Search Results:</h1>
         <Tracklist tracks={tracks} addToPlaylist={addToPlaylist} />
     </Card>
   );

@@ -11,18 +11,21 @@ function App() {
       name: "Intrasport",
       album: "K.G.",
       id: 7,
+      uri: "asfgartabrtbadfhsfdhkghjhsdfb",
     },
     {
       artist: "Red Hot Chili Peppers",
       name: "By The Way",
       album: "By The Way",
       id: 6,
+      uri: "asdvacsvkw4t2o4r234sadvvax",
     },
     {
       artist: "Khruangbin",
       name: "Dern Kala",
       album: "The Universe Smiles upon You",
       id: 3,
+      uri: "24895rgadfbvcsvb98qe4tmldf",
     },
   ];
 
@@ -38,7 +41,10 @@ function App() {
     e.preventDefault();
   };
 
-  const handleTitleChange = (e) => {};
+  const handleTitleChange = (e) => {
+    setPlaylistTitle(e.target.value);
+    console.log(playlistTitle);
+  };
 
   const hanldeAddToPlaylist = (e) => {
     const selectedTrack = e.target.parentElement.id;
@@ -53,6 +59,12 @@ function App() {
     setPlaylist(
       playlistArray.filter((track) => track.id.toString() !== selectedTrack)
     );
+  };
+
+  const handleSave = () => {
+    const uriArray = [];
+    playlistArray.map((track) => uriArray.push(track.uri));
+    console.log(uriArray);
   };
 
   return (
@@ -76,7 +88,7 @@ function App() {
           titleChange={handleTitleChange}
         />
       </div>
-      <button onClick={hanldeAddToPlaylist}>Save to Spotify</button>
+      <button onClick={handleSave}>Save to Spotify</button>
     </>
   );
 }

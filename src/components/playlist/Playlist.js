@@ -3,10 +3,11 @@ import Card from "../card/Card";
 import Track from "../track/Track";
 import styles from "./Playlist.module.css";
 
-function Playlist({ playlist, title, removeFromPlaylist }) {
+function Playlist({ playlist, title, removeFromPlaylist, titleChange }) {
+
   return (
     <Card className={styles.container}>
-      <h1>{title}</h1>
+      <input className={styles.input} type="text" placeholder={title} onChange={titleChange} />
       {playlist.length > 0 ? (
         playlist.map((track) => (
           <Track

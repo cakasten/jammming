@@ -1,0 +1,19 @@
+.input {
+  border: none;
+  border-bottom: 2px solid black;
+  color: black;
+  text-align: center;
+  font-size: 2em;
+  font-weight: 700;
+  margin: 10px;
+  width: 240px;
+  padding: 0;
+}
+
+.input::placeholder {
+  color: black;
+}
+
+.input:focus {
+  outline: none;
+}
