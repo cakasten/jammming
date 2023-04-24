@@ -4,13 +4,18 @@ import Track from "../track/Track";
 import styles from "./Playlist.module.css";
 
 function Playlist({ playlist, title, removeFromPlaylist, titleChange }) {
-
   return (
     <Card className={styles.container}>
-      <input className={styles.input} type="text" placeholder={title} onChange={titleChange} />
+      <input
+        className={styles.input}
+        type="text"
+        placeholder={title}
+        onChange={titleChange}
+      />
       {playlist.length > 0 ? (
         playlist.map((track) => (
           <Track
+            add={false}
             name={track.name}
             artist={track.artist}
             album={track.album}

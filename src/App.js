@@ -1,5 +1,5 @@
 import "./App.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import SearchBar from "./components/searchBar/SearchBar";
 import SearchResults from "./components/searchResults/SearchResults";
 import Playlist from "./components/playlist/Playlist";
@@ -43,15 +43,16 @@ function App() {
 
   const handleTitleChange = (e) => {
     setPlaylistTitle(e.target.value);
-    console.log(playlistTitle);
   };
 
   const hanldeAddToPlaylist = (e) => {
     const selectedTrack = e.target.parentElement.id;
-    setPlaylist((playlistArray) => [
-      ...playlistArray,
-      trackArray[selectedTrack],
-    ]);
+
+    playlistArray.every((track) => track.id.toString() !== selectedTrack) &&
+      setPlaylist([
+        ...playlistArray,
+        trackArray.find((track) => track.id.toString() === selectedTrack),
+      ]);
   };
 
   const handleRemoveFromPlaylist = (e) => {
@@ -64,7 +65,6 @@ function App() {
   const handleSave = () => {
     const uriArray = [];
     playlistArray.map((track) => uriArray.push(track.uri));
-    console.log(uriArray);
   };
 
   return (
