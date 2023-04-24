@@ -1,4 +1,4 @@
-# Jammming(project from Codecademy )
+# Jammming (project from Codecademy)
 
 This my version of one of the Jammming Codecademy portfolio projects.
 

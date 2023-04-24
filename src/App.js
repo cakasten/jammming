@@ -3,6 +3,8 @@ import { useEffect, useState } from "react";
 import SearchBar from "./components/searchBar/SearchBar";
 import SearchResults from "./components/searchResults/SearchResults";
 import Playlist from "./components/playlist/Playlist";
+import Spotify from "./modules/spotify";
+import spotify from "./modules/spotify";
 
 function App() {
   const trackArray = [
@@ -38,7 +40,7 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-    e.preventDefault();
+    Spotify.getToken();
   };
 
   const handleTitleChange = (e) => {
