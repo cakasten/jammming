@@ -1,36 +1,13 @@
 import "./App.css";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import SearchBar from "./components/searchBar/SearchBar";
 import SearchResults from "./components/searchResults/SearchResults";
 import Playlist from "./components/playlist/Playlist";
 import Spotify from "./modules/spotify";
-import spotify from "./modules/spotify";
 
 function App() {
-  const trackArray = [
-    {
-      artist: "King Gizzard and The Lizard Wizard",
-      name: "Intrasport",
-      album: "K.G.",
-      id: 7,
-      uri: "asfgartabrtbadfhsfdhkghjhsdfb",
-    },
-    {
-      artist: "Red Hot Chili Peppers",
-      name: "By The Way",
-      album: "By The Way",
-      id: 6,
-      uri: "asdvacsvkw4t2o4r234sadvvax",
-    },
-    {
-      artist: "Khruangbin",
-      name: "Dern Kala",
-      album: "The Universe Smiles upon You",
-      id: 3,
-      uri: "24895rgadfbvcsvb98qe4tmldf",
-    },
-  ];
 
+  const [trackArray, setTrackArray] = useState([]);
   const [playlistArray, setPlaylist] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [playlistTitle, setPlaylistTitle] = useState("New Playlist");
@@ -40,7 +17,8 @@ function App() {
   };
 
   const handleSubmit = (e) => {
-    Spotify.getToken();
+    e.preventDefault();
+    Spotify.search(searchInput).then(setTrackArray)
   };
 
   const handleTitleChange = (e) => {
@@ -49,7 +27,6 @@ function App() {
 
   const hanldeAddToPlaylist = (e) => {
     const selectedTrack = e.target.parentElement.id;
-
     playlistArray.every((track) => track.id.toString() !== selectedTrack) &&
       setPlaylist([
         ...playlistArray,
@@ -65,8 +42,8 @@ function App() {
   };
 
   const handleSave = () => {
-    const uriArray = [];
-    playlistArray.map((track) => uriArray.push(track.uri));
+    // const uriArray = [];
+    // playlistArray.map((track) => uriArray.push(track.uri));
   };
 
   return (
