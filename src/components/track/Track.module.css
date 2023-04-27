@@ -1,12 +1,24 @@
 .title {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .addRemove {
-    font-size: 30px;
-    align-self: end;
+  font-size: 30px;
+  align-self: end;
 }
 
 .addRemove:hover {
-    cursor: pointer;
+  cursor: pointer;
+}
+
+.text {
+  color: white;
+  border-radius: 30px;
+  width: 200px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+  text-align: center;
 }

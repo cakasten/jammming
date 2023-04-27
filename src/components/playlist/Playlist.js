@@ -21,6 +21,7 @@ function Playlist({ playlist, title, removeFromPlaylist, titleChange }) {
             album={track.album}
             id={track.id}
             key={track.id}
+            albumCover={track.coverArt}
             removeFromPlaylist={removeFromPlaylist}
           />
         ))

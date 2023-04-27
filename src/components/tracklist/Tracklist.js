@@ -13,6 +13,7 @@ function Tracklist({ tracks, addToPlaylist }) {
           key={track.id}
           id={track.id}
           addToPlaylist={addToPlaylist}
+          albumCover={track.coverArt}
         />
       ))}
     </>

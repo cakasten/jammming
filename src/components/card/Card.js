@@ -4,10 +4,9 @@ import styles from "./Card.module.css";
 function Card(props) {
   return (
     <div
+      style={{backgroundImage: `url(${props.albumArt})`, backgroundSize: 'cover'}}
       id={props.id}
-      onMouseEnter={props.mouseIn}
-      onMouseOut={props.mouseOut}
-      className={styles.container}
+      className={`${styles.container} ${props.className}`}
     >
       {props.children}
     </div>
@@ -15,3 +14,5 @@ function Card(props) {
 }
 
 export default Card;
+
+

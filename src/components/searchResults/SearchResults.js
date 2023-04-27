@@ -1,5 +1,4 @@
 import React from "react";
-import styles from "./SearchResults.module.css";
 import Card from "../card/Card";
 import Tracklist from "../tracklist/Tracklist";
 

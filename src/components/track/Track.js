@@ -9,11 +9,16 @@ function Track({
   addToPlaylist,
   removeFromPlaylist,
   id,
-  add
+  add,
+  albumCover,
 }) {
-
   return (
-    <Card addToPlaylist={addToPlaylist} id={id}>
+    <Card
+      className={`${styles.track} ${styles.text}`}
+      albumArt={albumCover}
+      addToPlaylist={addToPlaylist}
+      id={id}
+    >
       {add ? (
         <span className={styles.addRemove} onClick={addToPlaylist}>
           +
@@ -23,6 +28,7 @@ function Track({
           -
         </span>
       )}
+
       <h3 className={styles.title}>{name}</h3>
       <p>{artist}</p>
       <p>{album}</p>
