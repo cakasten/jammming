@@ -12,7 +12,7 @@
   width: 80%;
 }
 
-.button {
+.login {
   position: absolute;
   top: 50%;
   padding: 10px;
@@ -24,7 +24,7 @@
   border: none;
 }
 
-.button:hover {
+.login:hover {
   cursor: pointer;
   background-color: rgb(125, 159, 226);
 }

@@ -6,11 +6,17 @@ import Playlist from "./components/playlist/Playlist";
 import Spotify from "./modules/spotify";
 
 function App() {
-
+  const [login, setLogin] = useState(false);
   const [trackArray, setTrackArray] = useState([]);
   const [playlistArray, setPlaylist] = useState([]);
   const [searchInput, setSearchInput] = useState("");
   const [playlistTitle, setPlaylistTitle] = useState("New Playlist");
+
+  const handleLogin = () => {
+    window.sessionStorage.setItem('login', !login);
+    setLogin(!login);
+    Spotify.grantAccess();
+  }
 
   const handleInputChange = (e) => {
     setSearchInput(e.target.value);
@@ -18,7 +24,7 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    Spotify.search(searchInput).then(setTrackArray)
+    Spotify.search(searchInput).then(setTrackArray);
   };
 
   const handleTitleChange = (e) => {
@@ -42,11 +48,12 @@ function App() {
   };
 
   const handleSave = () => {
-    // const uriArray = [];
-    // playlistArray.map((track) => uriArray.push(track.uri));
+    const uriArray = [];
+    playlistArray.map((track) => uriArray.push(track.uri));
+    Spotify.savePlaylist(playlistTitle, uriArray);
   };
 
-  return (
+  return window.sessionStorage.getItem('login') ? (
     <>
       <div id="search">
         <SearchBar
@@ -69,6 +76,8 @@ function App() {
       </div>
       <button onClick={handleSave}>Save to Spotify</button>
     </>
+  ) : (
+    <button className="login" onClick={handleLogin}>Login</button>
   );
 }
 
